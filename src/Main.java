@@ -15,7 +15,15 @@ public class Main {
             int menu = 0;  // 메뉴 변수 초기화
 
             System.out.println("메뉴 숫자를 입력하세요. 1. 종료 2. 첫번째 계산 내역 삭제 3. 계산 내역 조회 4. 계산 시작");
-            menu = sc.nextInt();
+
+            // 입력 타입 예외처리
+            try {
+                menu = sc.nextInt();
+            }catch (InputMismatchException e) {
+                System.out.println("메뉴 숫자를 다시 입력 해주세요.");
+                sc.nextLine();
+                continue;
+            }
 
                 // 계산기 종료 입력 시
             if(menu == 1){
@@ -30,6 +38,12 @@ public class Main {
                 // 계산 내역 조회 입력 시
             } else if (menu == 3) {
                 int length = calulator.getListLength();
+
+                if(length == 0){
+                    System.out.println("조회할 계산 내역이 없습니다.");
+                    continue;
+                }
+
                 System.out.println("===계산 내역===");
                 for(int i = 0 ; i < length ; i++) {
                     System.out.println(i+1+ "번 계산 결과 값 = "+ calulator.getList(i) +" 입니다.");

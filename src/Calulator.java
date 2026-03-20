@@ -42,7 +42,7 @@ public class Calulator {
             list.remove(0);
             return "첫 번째 계산 내역이 삭제되었습니다.";
         } catch (IndexOutOfBoundsException e) {
-            return "계산 내역이 존재하지 않습니다.";
+            return "삭제할 계산 내역이 존재하지 않습니다.";
         }
     }
 
