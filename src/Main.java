@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Double num1;
         Double num2;
-        Double num3;
+
         String operatorString;
         char operator;
 
@@ -16,6 +16,12 @@ public class Main {
             System.out.println("계산할 첫 번째 숫자를 입력하세요. : ");
             num1 = sc.nextDouble();
             sc.nextLine();   // 스캐너 변수 초기화
+
+            // 양의 정수 입력 예외처리
+            if(num1 < 0){
+                System.out.println("양의 정수를 입력하세요.");
+                continue;
+            }
 
             System.out.println("계산할 사칙연산을 입력하세요.(+, -, *, /) : ");
             operatorString = sc.nextLine();
@@ -34,6 +40,12 @@ public class Main {
             // 분모 0 나눗셈 예외처리
             if(operator == '/' && num2 == 0){
                 System.out.println("분모를 0으로 나눌수 없습니다. 다시 입력하세요.");
+                continue;
+            }
+
+            // 양의 정수 입력 예외처리
+            if(num2 < 0){
+                System.out.println("양의 정수를 입력하세요.");
                 continue;
             }
 
