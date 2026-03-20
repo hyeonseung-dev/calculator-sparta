@@ -46,7 +46,7 @@ public class Main {
 
                 System.out.println("===계산 내역===");
                 for(int i = 0 ; i < length ; i++) {
-                    System.out.println(i+1+ "번 계산 결과 값 = "+ calulator.getList(i) +" 입니다.");
+                    System.out.println(i+1+ "번 계산 결과값 = "+ calulator.getList(i) +" 입니다.");
                 }
                 continue;
 
