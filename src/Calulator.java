@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Calulator {
     //속성
-    List<Double> list = new ArrayList<>();
+    private List<Double> list = new ArrayList<>();
     //생성자
     //기능
 
@@ -34,6 +34,21 @@ public class Calulator {
     // 결과 저장하는 메서드
     public void addList (double result){
         list.add(result);
+    }
+
+    //결과를 삭제하는 메서드
+    public void removeList (){
+            list.remove(0);
+    }
+
+    //결과를 조회하는 메서드
+    public double getList (int i){
+        return list.get(i);
+    }
+
+    //현재 저장된 계산내역 갯수 반환
+    public int getListLength (){
+        return list.size();
     }
 
 }

@@ -12,7 +12,7 @@ public class Main {
         char operator;
 
         while(true) {
-            String close = "";  // 종료 변수 초기화
+            String menu = "";  // 메뉴 변수 초기화
 
             System.out.println("계산할 첫 번째 숫자를 입력하세요. : ");
 
@@ -75,13 +75,31 @@ public class Main {
 
             // 결과 출력 및 반복 여부 출력
             System.out.println("결과 : " +num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
-            System.out.println("더 계산 하시겠습니까? (exit 입력 시 종료) (계속 시 아무키)");
-            close = sc.nextLine();
+            System.out.println("메뉴를 선택하세요. 1. 종료(exit 입력) 2. 첫번째 계산 내역 삭제(remove 입력) 3. 계산 내역 조회(get 입력) 4. 계속 계산 시(계속 시 아무키)");
+            menu = sc.nextLine();
 
-            if(close.equals("exit")){
+            // 계산기 종료 입력 시
+            if(menu.equals("exit")){
                 System.out.println("계산기를 종료합니다.");
                 return;
+
+            // 계산기 삭제 입력 시
+            } else if (menu.equals("remove")) {
+                calulator.removeList();
+                System.out.println("첫 번째 계산내역이 삭제되었습니다.");
+                continue;
+
+            // 계산 내역 조회 입력 시
+            } else if (menu.equals("get")) {
+                int length = calulator.getListLength();
+                System.out.println("===계산 내역===");
+                for(int i = 0 ; i < length ; i++) {
+                    System.out.println(i+ "번 계산 결과 값 = "+ calulator.getList(i) +" 입니다.");
+                }
+                continue;
             }
+
+
 
         }
     }
