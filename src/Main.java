@@ -6,8 +6,8 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Calulator calulator = new Calulator();
-        double num1;
-        double num2;
+        int num1;
+        int num2;
 
         char operator;
 
@@ -18,7 +18,7 @@ public class Main {
 
             // 입력되는 숫자 타입오류 예외처리
             try {
-                num1 = sc.nextDouble();
+                num1 = sc.nextInt();
             }catch (InputMismatchException e){
                 System.out.println("양의 정수를 입력하세요.");
                 sc.nextLine();   // 스캐너 변수 초기화
@@ -47,7 +47,7 @@ public class Main {
 
             // 입력되는 숫자 타입오류 예외처리
             try {
-                num2 = sc.nextDouble();
+                num2 = sc.nextInt();
             }catch (InputMismatchException e){
                 System.out.println("양의 정수를 입력하세요.");
                 sc.nextLine();   // 스캐너 변수 초기화
@@ -69,12 +69,12 @@ public class Main {
             }
 
             // 계산기 메서드 실행
-            double result = 0;
+            int result = 0;
 
             result = calulator.calulatorStart(num1,operator,num2);
 
             // 결과 출력 및 반복 여부 출력
-            System.out.println("결과 : " +num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
+            System.out.println("결과 : " + num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
             System.out.println("메뉴를 선택하세요. 1. 종료(exit 입력) 2. 첫번째 계산 내역 삭제(remove 입력) 3. 계산 내역 조회(get 입력) 4. 계속 계산 시(계속 시 아무키)");
             menu = sc.nextLine();
 
@@ -94,7 +94,7 @@ public class Main {
                 int length = calulator.getListLength();
                 System.out.println("===계산 내역===");
                 for(int i = 0 ; i < length ; i++) {
-                    System.out.println(i+ "번 계산 결과 값 = "+ calulator.getList(i) +" 입니다.");
+                    System.out.println(i+1+ "번 계산 결과 값 = "+ calulator.getList(i) +" 입니다.");
                 }
                 continue;
             }

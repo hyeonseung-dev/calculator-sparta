@@ -3,13 +3,13 @@ import java.util.List;
 
 public class Calulator {
     //속성
-    private List<Double> list = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
     //생성자
     //기능
 
     // 계산기 메서드
-    public double calulatorStart(double num1, char operator, double num2){
-        double result;
+    public int calulatorStart(int num1, char operator, int num2){
+        int result;
 
         switch (operator){
             case '+':
@@ -32,7 +32,7 @@ public class Calulator {
     }
 
     // 결과 저장하는 메서드
-    public void addList (double result){
+    public void addList (int result){
         list.add(result);
     }
 
@@ -42,7 +42,7 @@ public class Calulator {
     }
 
     //결과를 조회하는 메서드
-    public double getList (int i){
+    public int getList (int i){
         return list.get(i);
     }
 
