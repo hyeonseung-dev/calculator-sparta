@@ -37,8 +37,13 @@ public class Calulator {
     }
 
     //결과를 삭제하는 메서드
-    public void removeList (){
+    public String removeList (){
+        try {
             list.remove(0);
+            return "첫 번째 계산 내역이 삭제되었습니다.";
+        } catch (IndexOutOfBoundsException e) {
+            return "계산 내역이 존재하지 않습니다.";
+        }
     }
 
     //결과를 조회하는 메서드
