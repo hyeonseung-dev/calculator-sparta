@@ -39,6 +39,7 @@ public class Main {
             } else if (menu == 3) {
                 int length = calulator.getListLength();
 
+                //조회할 계산 내역 없을 시 출력
                 if(length == 0){
                     System.out.println("조회할 계산 내역이 없습니다.");
                     continue;
