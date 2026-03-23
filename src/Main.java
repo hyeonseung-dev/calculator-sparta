@@ -109,7 +109,13 @@ public class Main {
                 // 계산기 메서드 실행
                 int result = 0;
 
-                result = calulator.calulatorStart(num1,operator,num2);
+                // char -> enum으로 변환
+                Calulator.Operator op = Calulator.Operator.from(operator);
+
+                // enum 계산
+                result = op.apply(num1, num2);
+
+                // 구버전 result = calulator.calulatorStart(num1,operator,num2);
 
                 // 결과 출력 및 반복 여부 출력
                 System.out.println("결과 : " + num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
