@@ -109,11 +109,14 @@ public class Main {
                 // 계산기 메서드 실행
                 int result = 0;
 
-                // char -> enum으로 변환
+                // char -> enum으로 변환 op 변수에 해당 enum 상수 객체 저장
                 Calulator.Operator op = Calulator.Operator.from(operator);
 
-                // enum 계산
+                // op변수에 저장되어있는 enum 객체 로직 수행(계산)
                 result = op.apply(num1, num2);
+
+                // 계산 내역 저장
+                calulator.addList(result);
 
                 // 구버전 result = calulator.calulatorStart(num1,operator,num2);
 

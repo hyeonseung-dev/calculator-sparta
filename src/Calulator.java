@@ -1,3 +1,4 @@
+import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +33,8 @@ public class Calulator {
     }
 
     // enum 활용 계산기 메서드
-
     enum Operator {
-
+        // 상수명과 데이터, 각 객체별 내부로직 선언
         ADD('+') {
             public int apply(int a, int b) {
                 return a + b;
@@ -56,20 +56,25 @@ public class Calulator {
             }
         };
 
+        // 상수에 들어가는 필드 선언
         private final char symbol;
 
+        // 생성자 선언하여 데이터 값 연결
         Operator(char symbol) {
             this.symbol = symbol;
         }
 
+        // 객체별 내부로직 추상 함수 선언
         public abstract int apply(int a, int b);
 
+        // 사용자에게 사칙연산를 입력받아 enum 상수에서 찾은 후 Operator(enum) 타입으로 변환
         public static Operator from(char symbol) {
             for (Operator op : values()) {
                 if (op.symbol == symbol) {
                     return op;
                 }
             }
+            // 예외 처리
             throw new IllegalArgumentException("사칙연산을 다시 입력하세요.");
         }
     }
