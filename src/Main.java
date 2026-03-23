@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Calulator calulator = new Calulator();
+        Calculator calulator = new Calculator();
         int num1;
         int num2;
 
@@ -14,7 +14,7 @@ public class Main {
         while(true) {
             int menu = 0;  // 메뉴 변수 초기화
 
-            System.out.println("메뉴 숫자를 입력하세요. 1. 종료 2. 첫번째 계산 내역 삭제 3. 계산 내역 조회 4. 계산 시작");
+            System.out.println("메뉴 숫자를 입력하세요. 0. 계산 실행 1. 종료 2. 첫번째 계산 내역 삭제 3. 계산 내역 조회 4. 큰 결과값 찾기");
 
             // 입력 타입 예외처리
             try {
@@ -51,7 +51,7 @@ public class Main {
                 }
                 continue;
 
-            } else if (menu == 4) {
+            } else if (menu == 0) {
                 System.out.println("계산할 첫 번째 숫자를 입력하세요. : ");
 
                 // 입력되는 숫자 타입오류 예외처리
@@ -110,7 +110,7 @@ public class Main {
                 int result = 0;
 
                 // char -> enum으로 변환 op 변수에 해당 enum 상수 객체 저장
-                Calulator.Operator op = Calulator.Operator.from(operator);
+                Calculator.Operator op = Calculator.Operator.from(operator);
 
                 // op변수에 저장되어있는 enum 객체 로직 수행(계산)
                 result = op.apply(num1, num2);
@@ -122,6 +122,14 @@ public class Main {
 
                 // 결과 출력 및 반복 여부 출력
                 System.out.println("결과 : " + num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
+
+                // 계산 내역 중 큰 값들 찾아오기
+            } else if(menu == 4){
+                System.out.println("계산 내역 중 입력값 보다 큰 값들을 찾습니다. 값을 입력하세요. :  ");
+                int input = sc.nextInt();
+                System.out.println("입력 값 보다 큰 값들은"+calulator.findMax(input)+"입니다.");
+                sc.nextLine();  // 버퍼 초기화
+
             }
 
 

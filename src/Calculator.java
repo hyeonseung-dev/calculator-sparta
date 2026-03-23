@@ -1,14 +1,15 @@
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Calulator {
+public class Calculator {
     //속성
     private List<Integer> list = new ArrayList<>();
     //생성자
     //기능
 
-    // 계산기 메서드
+    // 기본문법 활용 계산기 메서드
     public int calulatorStart(int num1, char operator, int num2){
         int result;
 
@@ -104,6 +105,13 @@ public class Calulator {
     //현재 저장된 계산내역 갯수 반환
     public int getListLength (){
         return list.size();
+    }
+
+    // 큰 결과값 찾기 메서드
+    public List<Integer> findMax(int input){
+        return list.stream().
+                filter(x -> x > input).
+                collect(Collectors.toList());
     }
 
 }
