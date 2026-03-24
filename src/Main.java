@@ -6,15 +6,15 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Calculator calulator = new Calculator();
-        int num1;
-        int num2;
+        double num1;
+        double num2;
 
         char operator;
 
         while(true) {
             int menu = 0;  // 메뉴 변수 초기화
 
-            System.out.println("메뉴 숫자를 입력하세요. 0. 계산 실행 1. 종료 2. 첫번째 계산 내역 삭제 3. 계산 내역 조회 4. 큰 결과값 찾기");
+            System.out.println("메뉴 숫자를 입력하세요. 0. 계산 시작 1. 종료 2. 첫번째 계산 내역 삭제 3. 계산 내역 조회 4. 큰 결과값 찾기");
 
             // 입력 타입 예외처리
             try {
@@ -25,7 +25,7 @@ public class Main {
                 continue;
             }
 
-                // 계산기 종료 입력 시
+            // 계산기 종료 입력 시
             if(menu == 1){
                 System.out.println("계산기를 종료합니다.");
                 return;
@@ -56,10 +56,10 @@ public class Main {
 
                 // 입력되는 숫자 타입오류 예외처리
                 try {
-                    num1 = sc.nextInt();
+                    num1 = sc.nextDouble();
 
                 }catch (InputMismatchException e){
-                    System.out.println("양의 정수를 입력하세요.");
+                    System.out.println("숫자를 입력하세요.");
                     sc.nextLine();   // 스캐너 변수 초기화
                     continue;
                 }
@@ -85,9 +85,9 @@ public class Main {
 
                 // 입력되는 숫자 타입오류 예외처리
                 try {
-                    num2 = sc.nextInt();
+                    num2 = sc.nextDouble();
                 }catch (InputMismatchException e){
-                    System.out.println("양의 정수를 입력하세요.");
+                    System.out.println("숫자를 입력하세요.");
                     sc.nextLine();   // 스캐너 변수 초기화
                     continue;
                 }
@@ -107,29 +107,21 @@ public class Main {
                 }
 
                 // 계산기 메서드 실행
-                int result = 0;
+                double result = 0;
 
                 // char -> enum으로 변환 op 변수에 해당 enum 상수 객체 저장
                 Calculator.Operator op = Calculator.Operator.from(operator);
 
                 // op변수에 저장되어있는 enum 객체 로직 수행(계산)
-                result = op.apply(num1, num2);
+                // result = op.apply(num1, num2);
 
                 // 계산 내역 저장
                 calulator.addList(result);
 
-                // 구버전 result = calulator.calulatorStart(num1,operator,num2);
+                result = calulator.calulatorStart(num1,operator,num2);
 
                 // 결과 출력 및 반복 여부 출력
                 System.out.println("결과 : " + num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
-
-                // 계산 내역 중 큰 값들 찾아오기
-            } else if(menu == 4){
-                System.out.println("계산 내역 중 입력값 보다 큰 값들을 찾습니다. 값을 입력하세요. :  ");
-                int input = sc.nextInt();
-                System.out.println("입력 값 보다 큰 값들은"+calulator.findMax(input)+"입니다.");
-                sc.nextLine();  // 버퍼 초기화
-
             }
 
 

@@ -3,28 +3,28 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Calculator {
+public class Calculator<T extends Number> {
     //속성
-    private List<Integer> list = new ArrayList<>();
+    private List<Double> list = new ArrayList<>();
     //생성자
     //기능
 
-    // 기본문법 활용 계산기 메서드
-    public int calulatorStart(int num1, char operator, int num2){
-        int result;
+    // 기본문법 활용 계산기 메서드(제네릭 활용)
+    public double calulatorStart(T num1, char operator, T num2){
+        double result;
 
         switch (operator){
             case '+':
-                result = num1 + num2;
+                result = num1.doubleValue() + num2.doubleValue();
                 break;
             case '-':
-                result = num1 - num2;
+                result = num1.doubleValue() - num2.doubleValue();
                 break;
             case '*':
-                result = num1 * num2;
+                result = num1.doubleValue() * num2.doubleValue();
                 break;
             case '/':
-                result = num1 / num2;
+                result = num1.doubleValue() / num2.doubleValue();
                 break;
             default:
                 return -1;
@@ -33,8 +33,8 @@ public class Calculator {
         return result;
     }
 
-    // enum 활용 계산기 메서드
-    enum Operator {
+    // enum 활용 계산기 메서드 v1(enum을 클래스처럼 사용)
+    enum Operator{
         // 상수명과 데이터, 각 객체별 내부로직 선언
         ADD('+') {
             public int apply(int a, int b) {
@@ -83,7 +83,7 @@ public class Calculator {
 
 
     // 결과 저장하는 메서드
-    public void addList (int result){
+    public void addList (double result){
         list.add(result);
     }
 
@@ -98,7 +98,7 @@ public class Calculator {
     }
 
     //결과를 조회하는 메서드
-    public int getList (int i){
+    public double getList (int i){
         return list.get(i);
     }
 
@@ -107,11 +107,5 @@ public class Calculator {
         return list.size();
     }
 
-    // 큰 결과값 찾기 메서드
-    public List<Integer> findMax(int input){
-        return list.stream().
-                filter(x -> x > input).
-                collect(Collectors.toList());
-    }
-
 }
+
