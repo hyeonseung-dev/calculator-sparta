@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -38,11 +39,12 @@ public class Main {
                 System.out.println(calculator.removeList());
                 continue;
 
-                // 계산 내역 조회 입력 시
+                // 계산 내역 조회 입력 시 실행
             } else if (menu == 3) {
+                // 계산 내역이 저장되어있는 리스트의 크기를 변수에 받기
                 int length = calculator.getListLength();
 
-                //조회할 계산 내역 없을 시 출력
+                //리스트의 크기가 0이라면, 조회할 계산 내역 없다고 출력
                 if(length == 0){
                     System.out.println("조회할 계산 내역이 없습니다.");
                     continue;
@@ -127,11 +129,22 @@ public class Main {
 
                 // 결과 출력 및 반복 여부 출력
                 System.out.println("결과 : " + num1 +" "+ operator+" " + num2 +" = "+ result +"입니다.");
+
+                // 메뉴 4 큰 값 찾기 메서드 실행
+            } else if (menu == 4) {
+                System.out.println("계산 내역 중 입력값 보다 큰 값들을 찾습니다.");
+                System.out.println("값을 입력하세요. :");
+                int input = sc.nextInt();
+                List<Double> result = calculator.findMax(input);
+                if(result.isEmpty()) {
+                    System.out.println("입력 값보다 큰 값이 없습니다.");
+                    sc.nextLine();  // 버퍼 초기화
+                }else{
+                    System.out.println("입력 값 보다 큰 값들은" + result + "입니다.");
+                    sc.nextLine();  // 버퍼 초기화
+
+                }
             }
-
-
-
-
 
 
         }

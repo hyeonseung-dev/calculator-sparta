@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +8,7 @@ public class Calculator<T extends Number> {
     //생성자
     //기능
 
-    // 기본문법 활용 계산기 메서드(제네릭 활용)
+    // 기본문법 활용 계산기 메서드(제네릭 활용)(미사용)
     public double calculatorStart(T num1, char operator, T num2){
         double result;
 
@@ -32,7 +31,7 @@ public class Calculator<T extends Number> {
         return result;
     }
 
-    // enum 활용 계산기 메서드 v1(enum을 클래스처럼 사용 : static 메서드로 심볼로 이넘상수 변환 및 apply 메서드로 계산 수행)
+    // enum 활용 계산기 메서드 v1(enum을 클래스처럼 사용 : static 메서드로 심볼로 이넘상수 변환 및 apply 메서드로 계산 수행)(미사용)
     enum Operator {
         // 상수명과 데이터, 각 객체별 내부로직 선언
         ADD('+') {
@@ -79,7 +78,6 @@ public class Calculator<T extends Number> {
         }
     }
 
-
     // enum 활용 계산기 메서드 v2
     enum Operator2{
         ADD{
@@ -121,10 +119,6 @@ public class Calculator<T extends Number> {
             return result;
     }
 
-
-
-
-
     // 결과 저장하는 메서드
     public void addList (double result){
         list.add(result);
@@ -135,6 +129,7 @@ public class Calculator<T extends Number> {
         try {
             list.remove(0);
             return "1번 계산 내역이 삭제되었습니다.";
+            // 리스트에 삭제할 원소가 없으면 예외를 던지기
         } catch (IndexOutOfBoundsException e) {
             return "삭제할 계산 내역이 존재하지 않습니다.";
         }
@@ -148,6 +143,13 @@ public class Calculator<T extends Number> {
     //현재 저장된 계산내역 갯수 반환
     public int getListLength (){
         return list.size();
+    }
+
+    // 큰 결과값 찾기 메서드
+    public List<Double> findMax(double input){
+        return list.stream().
+                filter(x -> x > input).
+                collect(Collectors.toList());
     }
 
 }
